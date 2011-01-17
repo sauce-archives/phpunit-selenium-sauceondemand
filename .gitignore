@@ -2,3 +2,6 @@ nbproject
 phpunit.xml
 catalog.xml
 logs
+.project
+.settings
+.buildpath
