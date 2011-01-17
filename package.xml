@@ -15,11 +15,17 @@
   <name>Jan Sorgalla</name>
   <user>jsor</user>
   <email>jan.sorgalla@dotsunited.de</email>
-  <active>yes</active>
+  <active>no</active>
  </lead>
- <date>2011-01-03</date>
+ <developer>
+  <name>Jan Mathes</name>
+  <user>jmathes</user>
+  <email>jmathes@gmail.com</email>
+  <active>yes</active>
+ </developer>
+ <date>2011-01-16</date>
  <version>
-  <release>1.1.0</release>
+  <release>1.1.1</release>
   <api>1.0.0</api>
  </version>
  <stability>

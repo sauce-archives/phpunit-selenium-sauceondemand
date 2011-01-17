@@ -60,9 +60,9 @@ Additional setters are:
 
 ## Installation ##
 
-You can install PHPUnit_Selenium_SauceOnDemand via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
+You can install PHPUnit_Selenium_SauceOnDemand via the [Sauce Labs PEAR channel](http://saucelabs.github.com/pear). Run this from your command line:
 
-    pear channel-discover pear.dotsunited.de
-    pear install dotsunited/PHPUnit_Selenium_SauceOnDemand
+    pear channel-discover saucelabs.github.com/pear
+    pear install saucelabs/PHPUnit_Selenium_SauceOnDemand
 
 The above process will install PHPUnit_Selenium_SauceOnDemand as a PEAR library.
