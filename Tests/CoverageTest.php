@@ -57,7 +57,6 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
  */
 class CoverageTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase
 {
-    protected $coverageScriptUrl = 'http://labs.dotsunited.de/phpunit_coverage.php';
 
     public function setUp()
     {
@@ -67,7 +66,7 @@ class CoverageTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTest
         $this->setBrowser('firefox');
         $this->setBrowserVersion('3.6.');
 
-        $this->setBrowserUrl('http://labs.dotsunited.de');
+        $this->setBrowserUrl('http://example.saucelabs.com');
     }
 
     /**
@@ -76,6 +75,6 @@ class CoverageTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTest
     public function testCoverage()
     {
         $this->open('/');
-        $this->assertTitle('Dots United Labs');
+        $this->assertTitle('Sauce Labs');
     }
 }
