@@ -43,6 +43,7 @@
  */
 
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
+require_once('SymfonyComponents/YAML/sfYamlParser.php');
 
 /**
  * TestCase class that uses Sauce OnDemand to provide
@@ -143,6 +144,15 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         $driver->setTestCase($this);
         $driver->setTestId($this->testId);
 
+        $yml_path = realpath($_SERVER['HOME']) . '/.sauce/ondemand.yml';
+        $yml_found = file_exists($yml_path);
+        if($yml_found) {
+            if(!isset($this->yaml)) {
+                $this->yaml = new sfYamlParser();
+            }
+            $pearsauce_config = $this->yaml->parse(file_get_contents($yml_path));
+        }
+        
         if (isset($browser['username'])) {
             if (!is_string($browser['username'])) {
                 throw new InvalidArgumentException(
@@ -151,6 +161,10 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             }
 
             $driver->setUsername($browser['username']);
+        } elseif($yml_found && isset($pearsauce_config['username'])) {
+            $driver->setUsername($pearsauce_config['username']);
+        } else {
+            error_log('Warning: no username provided. This may result in "Could not connect to Selenium RC serve".  Run "pearsauce init <username> <accesskey>" or call $this->setUsername to fix');
         }
 
         if (isset($browser['accessKey'])) {
@@ -161,6 +175,10 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             }
 
             $driver->setAccessKey($browser['accessKey']);
+        } elseif($yml_found && isset($pearsauce_config['access_key'])) {
+            $driver->setAccessKey($pearsauce_config['access_key']);
+        } else {
+            error_log('Warning: no access key provided. This may result in "Could not connect to Selenium RC serve".  Run "pearsauce init <username> <accesskey>" or call $this->setAccessKey to fix');
         }
 
         if (isset($browser['os'])) {

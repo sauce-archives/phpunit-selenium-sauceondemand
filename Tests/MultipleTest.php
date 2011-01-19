@@ -60,8 +60,6 @@ class MultipleTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTest
     public static $browsers = array(
         array(
             'name'              => 'MultipleTest: Firefox 3.6 on Windows',
-            'username'          => PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_SAUCEONDEMAND_USERNAME,
-            'accessKey'         => PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_SAUCEONDEMAND_ACCESSKEY,
             'os'                => 'Windows 2003',
             'browser'           => 'firefox',
             'browserVersion'    => '3.6.',
@@ -81,8 +79,6 @@ class MultipleTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTest
         array(
             'name'           => 'Google Chrome on Windows',
             'jobName'        => 'MultipleTest: Google Chrome on Windows',
-            'username'       => PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_SAUCEONDEMAND_USERNAME,
-            'accessKey'      => PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_SAUCEONDEMAND_ACCESSKEY,
             'os'             => 'Windows 2003',
             'browser'        => 'googlechrome',
             'browserVersion' => ''

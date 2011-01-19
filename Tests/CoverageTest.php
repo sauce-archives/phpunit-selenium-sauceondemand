@@ -60,12 +60,10 @@ class CoverageTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTest
 
     public function setUp()
     {
-        $this->setUsername(PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_SAUCEONDEMAND_USERNAME);
-        $this->setAccessKey(PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_SAUCEONDEMAND_ACCESSKEY);
         $this->setos('Windows 2003');
         $this->setBrowser('firefox');
         $this->setBrowserVersion('3.6.');
-
+        
         $this->setBrowserUrl('http://example.saucelabs.com');
     }
 

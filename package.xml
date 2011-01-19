@@ -65,6 +65,10 @@
     <channel>pear.phpunit.de</channel>
     <min>1.0.0</min>
    </package>
+   <package>
+    <name>YAML</name>
+    <channel>pear.symfony-project.com</channel>
+   </package>
   </required>
  </dependencies>
  <phprelease/>
