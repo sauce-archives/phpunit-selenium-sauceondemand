@@ -76,7 +76,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['name'])) {
             if (!is_string($browser['name'])) {
                 throw new InvalidArgumentException(
-                  'Array element "name" is no string.'
+                  'Array element "name" is not an string.'
                 );
             }
         } else {
@@ -86,7 +86,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['browser'])) {
             if (!is_string($browser['browser'])) {
                 throw new InvalidArgumentException(
-                  'Array element "browser" is no string.'
+                  'Array element "browser" is not a string.'
                 );
             }
         } else {
@@ -96,7 +96,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['host'])) {
             if (!is_string($browser['host'])) {
                 throw new InvalidArgumentException(
-                  'Array element "host" is no string.'
+                  'Array element "host" is not a string.'
                 );
             }
         } else {
@@ -106,7 +106,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['port'])) {
             if (!is_int($browser['port'])) {
                 throw new InvalidArgumentException(
-                  'Array element "port" is no integer.'
+                  'Array element "port" is not an integer.'
                 );
             }
         } else {
@@ -116,7 +116,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['timeout'])) {
             if (!is_int($browser['timeout'])) {
                 throw new InvalidArgumentException(
-                  'Array element "timeout" is no integer.'
+                  'Array element "timeout" is not an integer.'
                 );
             }
         } else {
@@ -126,7 +126,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['httpTimeout'])) {
             if (!is_int($browser['httpTimeout'])) {
                 throw new InvalidArgumentException(
-                  'Array element "httpTimeout" is no integer.'
+                  'Array element "httpTimeout" is not an integer.'
                 );
             }
         } else {
@@ -146,7 +146,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['username'])) {
             if (!is_string($browser['username'])) {
                 throw new InvalidArgumentException(
-                  'Array element "username" is no string.'
+                  'Array element "username" is not a string.'
                 );
             }
 
@@ -156,7 +156,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['accessKey'])) {
             if (!is_string($browser['accessKey'])) {
                 throw new InvalidArgumentException(
-                  'Array element "accessKey" is no string.'
+                  'Array element "accessKey" is not a string.'
                 );
             }
 
@@ -166,7 +166,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['os'])) {
             if (!is_string($browser['os'])) {
                 throw new InvalidArgumentException(
-                  'Array element "os" is no string.'
+                  'Array element "os" is not a string.'
                 );
             }
 
@@ -176,7 +176,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['browserVersion'])) {
             if (!is_string($browser['browserVersion'])) {
                 throw new InvalidArgumentException(
-                  'Array element "browserVersion" is no string.'
+                  'Array element "browserVersion" is not a string.'
                 );
             }
 
@@ -186,7 +186,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['jobName'])) {
             if (!is_string($browser['jobName'])) {
                 throw new InvalidArgumentException(
-                  'Array element "jobName" is no string.'
+                  'Array element "jobName" is not a string.'
                 );
             }
 
@@ -196,7 +196,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['public'])) {
             if (!is_bool($browser['public'])) {
                 throw new InvalidArgumentException(
-                  'Array element "public" is no boolean.'
+                  'Array element "public" is not a boolean.'
                 );
             }
 
@@ -206,7 +206,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['tags'])) {
             if (!is_array($browser['tags'])) {
                 throw new InvalidArgumentException(
-                  'Array element "tags" is no array.'
+                  'Array element "tags" is not an array.'
                 );
             }
 
@@ -216,7 +216,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['passed'])) {
             if (!is_bool($browser['passed'])) {
                 throw new InvalidArgumentException(
-                  'Array element "passed" is no boolean.'
+                  'Array element "passed" is not a boolean.'
                 );
             }
 
@@ -230,7 +230,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['recordVideo'])) {
             if (!is_bool($browser['recordVideo'])) {
                 throw new InvalidArgumentException(
-                  'Array element "recordVideo" is no boolean.'
+                  'Array element "recordVideo" is not a boolean.'
                 );
             }
 
@@ -240,7 +240,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['recordScreenshots'])) {
             if (!is_bool($browser['recordScreenshots'])) {
                 throw new InvalidArgumentException(
-                  'Array element "recordScreenshots" is no boolean.'
+                  'Array element "recordScreenshots" is not a boolean.'
                 );
             }
 
@@ -250,7 +250,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['sauceAdvisor'])) {
             if (!is_bool($browser['sauceAdvisor'])) {
                 throw new InvalidArgumentException(
-                  'Array element "sauceAdvisor" is no boolean.'
+                  'Array element "sauceAdvisor" is not a boolean.'
                 );
             }
 
@@ -260,7 +260,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['singleWindow'])) {
             if (!is_bool($browser['singleWindow'])) {
                 throw new InvalidArgumentException(
-                  'Array element "singleWindow" is no boolean.'
+                  'Array element "singleWindow" is not a boolean.'
                 );
             }
 
@@ -270,7 +270,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['userExtensionsUrl'])) {
             if (!is_string($browser['userExtensionsUrl']) && !is_array($browser['userExtensionsUrl'])) {
                 throw new InvalidArgumentException(
-                  'Array element "userExtensionsUrl" is no string/array.'
+                  'Array element "userExtensionsUrl" is not a string/array.'
                 );
             }
 
@@ -280,7 +280,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['firefoxProfileUrl'])) {
             if (!is_string($browser['firefoxProfileUrl'])) {
                 throw new InvalidArgumentException(
-                  'Array element "firefoxProfileUrl" is no string.'
+                  'Array element "firefoxProfileUrl" is not a string.'
                 );
             }
 
@@ -290,7 +290,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['maxDuration'])) {
             if (!is_int($browser['maxDuration'])) {
                 throw new InvalidArgumentException(
-                  'Array element "maxDuration" is no integer.'
+                  'Array element "maxDuration" is not an integer.'
                 );
             }
 
@@ -300,7 +300,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['idleTimeout'])) {
             if (!is_int($browser['idleTimeout'])) {
                 throw new InvalidArgumentException(
-                  'Array element "idleTimeout" is no integer.'
+                  'Array element "idleTimeout" is not an integer.'
                 );
             }
 
@@ -310,7 +310,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['build'])) {
             if (!is_int($browser['build'])) {
                 throw new InvalidArgumentException(
-                  'Array element "build" is no integer.'
+                  'Array element "build" is not an integer.'
                 );
             }
 
@@ -320,7 +320,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         if (isset($browser['customData'])) {
             if (!is_array($browser['customData']) && !is_object($browser['customData'])) {
                 throw new InvalidArgumentException(
-                  'Array element "customData" is no array/object.'
+                  'Array element "customData" is not an array/object.'
                 );
             }
 
