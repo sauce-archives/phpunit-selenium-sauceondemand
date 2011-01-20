@@ -23,9 +23,9 @@
   <email>jmathes@gmail.com</email>
   <active>yes</active>
  </developer>
- <date>2011-01-16</date>
+ <date>2011-01-19</date>
  <version>
-  <release>1.1.1</release>
+  <release>1.2.0</release>
   <api>1.0.0</api>
  </version>
  <stability>
@@ -50,6 +50,26 @@
      </dir>
     </dir>
    </dir>
+   <file baseinstalldir="/" name="pearsauce.php" role="script">
+    <tasks:replace from="/usr/bin/env php" to="php_bin" type="pear-config" />
+    <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
+    <tasks:replace from="@package_version@" to="version" type="package-info" />
+   </file>
+   <file baseinstalldir="/" name="pearsauce.bat" role="script">
+    <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
+    <tasks:replace from="@bin_dir@" to="bin_dir" type="pear-config" />
+    <tasks:replace from="@package_version@" to="version" type="package-info" />
+   </file>
+   <file baseinstalldir="/" name="sauce.php" role="script">
+    <tasks:replace from="/usr/bin/env php" to="php_bin" type="pear-config" />
+    <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
+    <tasks:replace from="@package_version@" to="version" type="package-info" />
+   </file>
+   <file baseinstalldir="/" name="sauce.bat" role="script">
+    <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
+    <tasks:replace from="@bin_dir@" to="bin_dir" type="pear-config" />
+    <tasks:replace from="@package_version@" to="version" type="package-info" />
+   </file>
   </dir>
  </contents>
  <dependencies>
@@ -68,8 +88,30 @@
    <package>
     <name>YAML</name>
     <channel>pear.symfony-project.com</channel>
+    <min>1.0.2</min>
    </package>
   </required>
  </dependencies>
+ <phprelease>
+  <installconditions>
+   <os>
+    <name>windows</name>
+   </os>
+  </installconditions>
+  <filelist>
+   <install as="pearsauce" name="pearsauce.php" />
+   <install as="sauce" name="sauce.php" />
+   <install as="pearsauce.bat" name="pearsauce.bat" />
+   <install as="sauce.bat" name="sauce.bat" />
+  </filelist>
+ </phprelease>
+ <phprelease>
+  <filelist>
+   <install as="pearsauce" name="pearsauce.php" />
+   <install as="sauce" name="sauce.php" />
+   <ignore name="pearsauce.bat" />
+   <ignore name="sauce.bat" />
+  </filelist>
+ </phprelease>
  <phprelease/>
 </package>
