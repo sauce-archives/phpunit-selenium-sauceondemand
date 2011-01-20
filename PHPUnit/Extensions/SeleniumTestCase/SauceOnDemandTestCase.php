@@ -147,13 +147,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         $yml_path = realpath($_SERVER['HOME']) . '/.sauce/ondemand.yml';
         $yml_found = file_exists($yml_path);
         if(!$yml_found) {
-            $yml_backup_path = '/.sauce/ondemand.yml';
-            if(file_exists($yml_backup_path)) {
-                if(!(file_exists($_SERVER['HOME'] . '/.sauce'))) {
-                    mkdir($_SERVER['HOME'] . '/.sauce');
-                }
-                file_put_contents($yml_path, file_get_contents('/.sauce/ondemand.yml'));
-            }
+            $yml_path = '/.sauce/ondemand.yml';
             $yml_found = file_exists($yml_path);
         }
         if($yml_found) {
