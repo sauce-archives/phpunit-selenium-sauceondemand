@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "I hope you incremented the version number and added all the files you need because this script doesn't do that for you!"
+if ! $(pear package-validate | grep -q "0 error"); then
+    pear package-validate
+    exit 1
+fi
+pear package
+cd ~/pear
+pirum add . ../phpunit-selenium-sauceondemand
+git commit -am "auto-deploy"
+git push origin gh-pages
