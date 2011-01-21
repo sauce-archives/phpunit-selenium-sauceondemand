@@ -43,4 +43,37 @@
  * @since      File available since Release 3.5.0
  */
 
-require_once('./pearsauce.php');
+require_once('SymfonyComponents/YAML/sfYamlDumper.php');
+
+
+// loop through each element in the $argv array
+$message = "Usage: sauce  [options] COMMAND [options] [COMMAND [options] ...] [args]\n" .
+           "\n" .
+           "Available commands:\n" .
+           "configure      Configure Sauce OnDemand credentials\n" .
+           "help           Provide help for individual commands\n";
+if(count($argv) >= 3) {
+    if($argv[1] == 'help') {
+        if($argv[2] == 'help') {
+            $message = "help: Provide help for individual commands\n" .
+                       "This command prints the program help if no arguments are given. If one or more command names are given as arguments, these arguments are interpreted as a hierachy of commands and the help for the right most command is show.\n" .
+                       "\n" .
+                       "Usage: sauce  help [COMMAND SUBCOMMAND ...]\n";
+        } elseif($argv[2] == 'configure') {
+            $message = "configure: Configure Sauce OnDemand credentials\n" .
+                       "\n" .
+                       "Usage: sauce configure USERNAME ACCESS_KEY\n";
+        }
+    } elseif($argv[1] == 'configure' && count($argv) >= 1) {
+        $dumper_lol = new sfYamlDumper();
+        $config = array('username' => $argv[2], 'access_key' => $argv[3]);
+        $yaml = $dumper_lol->dump($config);
+        if(!(file_exists($_SERVER['HOME'] . '/.sauce'))) {
+            mkdir($_SERVER['HOME'] . '/.sauce');
+        }
+        file_put_contents($_SERVER['HOME'] . '/.sauce/ondemand.yml', $yaml);
+        $message = "Account configured.  You are now ready to run saucy tests.  You feel very hot and saucy.\n";
+    }
+}
+
+echo $message;
