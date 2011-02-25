@@ -101,7 +101,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
                 );
             }
         } else {
-            $browser['host'] = 'saucelabs.com';
+            $browser['host'] = 'ondemand.saucelabs.com';
         }
 
         if (isset($browser['port'])) {
@@ -111,7 +111,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
                 );
             }
         } else {
-            $browser['port'] = 4444;
+            $browser['port'] = 80;
         }
 
         if (isset($browser['timeout'])) {
