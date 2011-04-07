@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.4.12" version="2.0"
+<package packagerversion="1.4.11" version="2.0"
   xmlns="http://pear.php.net/dtd/package-2.0"
   xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -29,9 +29,9 @@
   <email>ericpallen@gmail.com</email>
   <active>yes</active>
  </developer>
- <date>2011-01-20</date>
+ <date>2011-03-06</date>
  <version>
-  <release>1.2.4</release>
+  <release>1.2.5</release>
   <api>1.0.0</api>
  </version>
  <stability>
