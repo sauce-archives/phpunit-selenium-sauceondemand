@@ -402,7 +402,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
      */
     protected function onNotSuccessfulTest(Exception $e)
     {
-        if ($e instanceof PHPUnit_Framework_ExpectationFailedException) {
+        try {
             $jobUrl = sprintf(
                 'https://saucelabs.com/jobs/%s',
                 $this->drivers[0]->getSessionId()
@@ -410,27 +410,28 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
 
             $buffer = 'Current URL: ' . $this->drivers[0]->getLocation() .
                       "\n" .
-                      'Job URL: ' . $jobUrl .
-                      "\n";
+                      'Job URL: ' . $jobUrl;
 
-            $message = $e->getCustomMessage();
-        }
-
-        try {
             $this->stop();
-        }
 
-        catch (RuntimeException $e) {
+        } catch (RuntimeException $d) {
         }
 
         if ($e instanceof PHPUnit_Framework_ExpectationFailedException) {
-            if (!empty($message)) {
-                $buffer .= "\n" . $message;
-            }
-
-            $e->setCustomMessage($buffer);
+            $message = $e->getCustomMessage();
+        } else {
+            $message = $e->getMessage();
         }
 
-        throw $e;
+        if (!empty($message)) {
+            $buffer = "\n".$message."\n".$buffer;
+        }
+
+        if ($e instanceof PHPUnit_Framework_ExpectationFailedException) {
+            $e->setCustomMessage($buffer);
+            throw $e;
+        } else {
+            throw new PHPUnit_Framework_Exception($buffer);
+        }
     }
 }
