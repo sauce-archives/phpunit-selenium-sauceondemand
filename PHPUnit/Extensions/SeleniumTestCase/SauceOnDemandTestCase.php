@@ -243,10 +243,6 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             }
 
             $driver->setPassed($browser['passed']);
-        } else {
-            // Set passed to true by default, $this->onNotSuccessfulTest()
-            // will set it to false of the test fails
-            $driver->setPassed(true);
         }
 
         if (isset($browser['recordVideo'])) {
