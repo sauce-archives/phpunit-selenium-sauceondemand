@@ -30,6 +30,12 @@
   <active>yes</active>
  </developer>
  <date>2011-03-06</date>
+ <developer>
+  <name>Santiago Suarez Ordonez</name>
+  <user>santiycr</user>
+  <email>santiycr@gmail.com</email>
+  <active>yes</active>
+ </developer>
  <version>
   <release>1.2.5</release>
   <api>1.0.0</api>
