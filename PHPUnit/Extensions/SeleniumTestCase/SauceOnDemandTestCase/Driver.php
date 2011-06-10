@@ -559,4 +559,162 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
 
         $this->customData = $customData;
     }
+
+    /**
+     * Let the monkeypatching begin! Can't believe the default Driver handled
+     * everything with a stop :S
+     * Hopefully we'll contribute this back soon
+     */
+
+    /**
+     * Send a command to the Selenium RC server.
+     *
+     * @param  string $command
+     * @param  array  $arguments
+     * @return string
+     * @author Shin Ohno <ganchiku@gmail.com>
+     * @author Bjoern Schotte <schotte@mayflower.de>
+     */
+    protected function doCommand($command, array $arguments = array())
+    {
+        if (!ini_get('allow_url_fopen')) {
+            throw new PHPUnit_Framework_Exception(
+              'Could not connect to the Selenium RC server because allow_url_fopen is disabled.'
+            );
+        }
+
+        $url = sprintf(
+          'http://%s:%s/selenium-server/driver/?cmd=%s',
+          $this->host,
+          $this->port,
+          urlencode($command)
+        );
+
+        $numArguments = count($arguments);
+
+        for ($i = 0; $i < $numArguments; $i++) {
+            $argNum = strval($i + 1);
+            $url .= sprintf('&%s=%s', $argNum, urlencode(trim($arguments[$i])));
+        }
+
+        if (isset($this->sessionId)) {
+            $url .= sprintf('&%s=%s', 'sessionId', $this->sessionId);
+        }
+
+        $this->commands[] = sprintf('%s(%s)', $command, join(', ', $arguments));
+
+        $context = stream_context_create(
+          array(
+            'http' => array(
+              'timeout' => $this->httpTimeout
+            )
+          )
+        );
+
+        $handle = @fopen($url, 'r', FALSE, $context);
+
+        if (!$handle) {
+            throw new PHPUnit_Framework_Exception(
+              'Could not connect to the Selenium RC server.'
+            );
+        }
+
+        stream_set_blocking($handle, 1);
+        stream_set_timeout($handle, $this->httpTimeout);
+
+        /* Tell the web server that we will not be sending more data
+        so that it can start processing our request */
+        stream_socket_shutdown($handle, STREAM_SHUT_WR);
+
+        $response = stream_get_contents($handle);
+
+        fclose($handle);
+
+        if (!preg_match('/^OK/', $response)) {
+            throw new PHPUnit_Framework_Exception(
+              sprintf(
+                "Response from Selenium RC server for %s.\n%s.\n",
+                $this->commands[count($this->commands)-1],
+                $response
+              )
+            );
+        }
+
+        return $response;
+    }
+
+    /**
+     * Send a command to the Selenium RC server and treat the result
+     * as a boolean.
+     *
+     * @param  string $command
+     * @param  array  $arguments
+     * @return boolean
+     * @author Shin Ohno <ganchiku@gmail.com>
+     * @author Bjoern Schotte <schotte@mayflower.de>
+     */
+    protected function getBoolean($command, array $arguments)
+    {
+        $result = $this->getString($command, $arguments);
+
+        switch ($result) {
+            case 'true':  return TRUE;
+
+            case 'false': return FALSE;
+
+            default: {
+                throw new PHPUnit_Framework_Exception(
+                  'Result is neither "true" nor "false": ' . PHPUnit_Util_Type::toString($result, TRUE)
+                );
+            }
+        }
+    }
+
+    /**
+     * Send a command to the Selenium RC server and treat the result
+     * as a number.
+     *
+     * @param  string $command
+     * @param  array  $arguments
+     * @return numeric
+     * @author Shin Ohno <ganchiku@gmail.com>
+     * @author Bjoern Schotte <schotte@mayflower.de>
+     */
+    protected function getNumber($command, array $arguments)
+    {
+        $result = $this->getString($command, $arguments);
+
+        if (!is_numeric($result)) {
+            throw new PHPUnit_Framework_Exception(
+              'Result is not numeric: ' . PHPUnit_Util_Type::toString($result, TRUE)
+            );
+        }
+
+        return $result;
+    }
+
+    /**
+     * Send a command to the Selenium RC server and treat the result
+     * as a string.
+     *
+     * @param  string $command
+     * @param  array  $arguments
+     * @return string
+     * @author Shin Ohno <ganchiku@gmail.com>
+     * @author Bjoern Schotte <schotte@mayflower.de>
+     */
+    protected function getString($command, array $arguments)
+    {
+        try {
+            $result = $this->doCommand($command, $arguments);
+        }
+
+        catch (RuntimeException $e) {
+            throw $e;
+        }
+
+        return (strlen($result) > 3) ? substr($result, 3) : '';
+    }
+
+
 }
