@@ -32,5 +32,4 @@ if confirm in ["y", "Y", ""]:
     with open("package.xml", "w") as new:
         new.write(package.toxml())
 
-
-
+print release

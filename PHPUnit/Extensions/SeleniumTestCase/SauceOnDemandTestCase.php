@@ -408,9 +408,10 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
                 $this->drivers[0]->getSessionId()
             );
 
-            $buffer = 'Current URL: ' . $this->drivers[0]->getLocation() .
+            $buffer = 'Current Browser URL: ' . $this->drivers[0]->getLocation() .
                       "\n" .
-                      'Job URL: ' . $jobUrl;
+                      'Sauce Labs Job: ' . $jobUrl .
+                      "\n";
 
             $this->stop();
 
