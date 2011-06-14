@@ -1,12 +1,13 @@
-#!/bin/bash
+\#!/bin/bash
 echo "I hope you incremented the version number and added all the files you need because this script doesn't do that for you!"
 if ! $(pear package-validate | grep -q "0 error"); then
     pear package-validate
     exit 1
 fi
 target=$(pear package | tail -n 1 | cut -f2 -d ' ')
-cd ~/pear
-pirum add . ~/phpunit-selenium-sauceondemand/$target
+pushd ../pear
+pirum add . ../phpunit-selenium-sauceondemand/$target
 git add -A
 git commit -m "auto-deploy"
 git push origin gh-pages
+popd
