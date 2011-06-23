@@ -90,9 +90,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
                   'Array element "browser" is not a string.'
                 );
             }
+            $this->browserName = $browser['browser'];
         } else {
             $browser['browser'] = '';
         }
+
 
         if (isset($browser['host'])) {
             if (!is_string($browser['host'])) {
@@ -185,16 +187,6 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             error_log('Warning: no access key provided. This may result in "Could not connect to Selenium RC serve".  Run "sauce configure <username> <accesskey>" or call $this->setAccessKey to fix');
         }
 
-        if (isset($browser['os'])) {
-            if (!is_string($browser['os'])) {
-                throw new InvalidArgumentException(
-                  'Array element "os" is not a string.'
-                );
-            }
-
-            $driver->setOs($browser['os']);
-        }
-
         if (isset($browser['browserVersion'])) {
             if (!is_string($browser['browserVersion'])) {
                 throw new InvalidArgumentException(
@@ -203,6 +195,18 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             }
 
             $driver->setBrowserVersion($browser['browserVersion']);
+            $this->browserName .= " ".$browser['browserVersion'];
+        }
+
+        if (isset($browser['os'])) {
+            if (!is_string($browser['os'])) {
+                throw new InvalidArgumentException(
+                  'Array element "os" is not a string.'
+                );
+            }
+
+            $driver->setOs($browser['os']);
+            $this->browserName .= " ".$browser['os'];
         }
 
         if (isset($browser['jobName'])) {
