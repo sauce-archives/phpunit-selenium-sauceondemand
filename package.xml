@@ -21,13 +21,13 @@
   <email>ericpallen@gmail.com</email>
   <active>yes</active>
  </developer>
- <date>2011-06-13</date>
  <developer>
   <name>Santiago Suarez Ordonez</name>
   <user>santiycr</user>
   <email>santiycr@gmail.com</email>
   <active>yes</active>
  </developer>
+ <date>2011-06-13</date>
  <version>
   <release>1.3.1</release>
   <api>1.0.0</api>
@@ -96,8 +96,8 @@
    </package>
    <package>
     <name>PHPUnit</name>
-    <channel>pear.phpunit.de</channel>
-    <min>1.0.0</min>
+    <channel>saucelabs</channel>
+    <min>3.5.17</min>
    </package>
   </required>
  </dependencies>

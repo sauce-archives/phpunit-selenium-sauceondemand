@@ -420,6 +420,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             $this->stop();
 
         } catch (RuntimeException $d) {
+            if (!isset($buffer)) $buffer = "";
         }
 
         if ($e instanceof PHPUnit_Framework_ExpectationFailedException) {
