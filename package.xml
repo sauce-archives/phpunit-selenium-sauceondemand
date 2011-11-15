@@ -27,9 +27,9 @@
   <email>santiycr@gmail.com</email>
   <active>yes</active>
  </developer>
- <date>2011-11-11</date>
+ <date>2011-11-14</date>
  <version>
-  <release>1.3.8</release>
+  <release>1.3.9</release>
   <api>1.0.0</api>
  </version>
  <stability>
@@ -87,7 +87,7 @@
    <package>
     <name>PHPUnit_Selenium</name>
     <channel>saucelabs.github.com/pear</channel>
-    <min>1.1.6</min>
+    <min>1.1.7</min>
    </package>
    <package>
     <name>YAML</name>
@@ -97,7 +97,7 @@
    <package>
     <name>PHPUnit</name>
     <channel>saucelabs.github.com/pear</channel>
-    <min>3.5.22</min>
+    <min>3.5.24</min>
    </package>
   </required>
  </dependencies>
