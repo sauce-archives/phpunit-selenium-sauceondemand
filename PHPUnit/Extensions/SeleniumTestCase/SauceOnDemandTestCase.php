@@ -330,9 +330,9 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         }
 
         if (isset($browser['build'])) {
-            if (!is_int($browser['build'])) {
+            if (!is_string($browser['build'])) {
                 throw new InvalidArgumentException(
-                  'Array element "build" is not an integer.'
+                  'Array element "build" is not a string.'
                 );
             }
 
