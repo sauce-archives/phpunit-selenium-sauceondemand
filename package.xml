@@ -86,7 +86,7 @@
    </pearinstaller>
    <package>
     <name>PHPUnit_Selenium</name>
-    <channel>saucelabs.github.com/pear</channel>
+    <channel>pear.phpunit.de</channel>
     <min>1.1.7</min>
    </package>
    <package>
@@ -96,7 +96,7 @@
    </package>
    <package>
     <name>PHPUnit</name>
-    <channel>saucelabs.github.com/pear</channel>
+    <channel>pear.phpunit.de</channel>
     <min>3.5.24</min>
    </package>
   </required>
