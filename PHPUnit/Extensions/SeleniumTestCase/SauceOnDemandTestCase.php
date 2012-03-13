@@ -420,23 +420,15 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             $this->stop();
 
         } catch (RuntimeException $d) {
+            if (!isset($buffer)) $buffer = "";
         }
 
-        if ($e instanceof PHPUnit_Framework_ExpectationFailedException) {
-            $message = $e->getCustomMessage();
-        } else {
-            $message = $e->getMessage();
-        }
+        $message = $e->getMessage();
 
         if (!empty($message)) {
             $buffer = "\n".$message."\n".$buffer;
         }
 
-        if ($e instanceof PHPUnit_Framework_ExpectationFailedException) {
-            $e->setCustomMessage($buffer);
-            throw $e;
-        } else {
-            throw new PHPUnit_Framework_Exception($buffer);
-        }
+        throw new PHPUnit_Framework_Exception($buffer);
     }
 }
