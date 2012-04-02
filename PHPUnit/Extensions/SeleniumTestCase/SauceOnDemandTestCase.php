@@ -43,6 +43,7 @@
  */
 
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
+require_once 'PHPUnit/Extensions/SeleniumTestCase/SauceOnDemandTestCase/Driver.php';
 require_once('SymfonyComponents/YAML/sfYamlParser.php');
 
 /**
