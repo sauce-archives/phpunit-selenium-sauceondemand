@@ -62,7 +62,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
 {
     /**
      * Whether to automatically report if a test passed/failed to Sauce OnDemand
-     * 
+     *
      * @see http://saucelabs.com/docs/sauce-ondemand#passed
      * @var boolean
      */
@@ -159,7 +159,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             }
             $pearsauce_config = $this->yaml->parse(file_get_contents($yml_path));
         }
-        
+
         if (isset($browser['username'])) {
             if (!is_string($browser['username'])) {
                 throw new InvalidArgumentException(
@@ -350,7 +350,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             $driver->setCustomData($browser['customData']);
         }
 
-        $this->drivers[] = $driver;
+        $this->drivers[0] = $driver;
 
         return $driver;
     }
