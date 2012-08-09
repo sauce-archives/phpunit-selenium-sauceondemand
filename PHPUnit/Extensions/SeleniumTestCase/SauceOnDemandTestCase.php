@@ -349,6 +349,16 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             $driver->setCustomData($browser['customData']);
         }
 
+        if (isset($browser['avoidProxy'])) {
+            if (!is_bool($browser['avoidProxy'])) {
+                throw new InvalidArgumentException(
+                  'Array element "avoidProxy" is not a boolean.'
+                );
+            }
+
+            $driver->setAvoidProxy($browser['avoidProxy']);
+        }
+
         $this->drivers[0] = $driver;
 
         return $driver;

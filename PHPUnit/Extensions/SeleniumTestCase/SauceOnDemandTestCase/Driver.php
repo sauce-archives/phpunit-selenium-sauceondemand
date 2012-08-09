@@ -148,6 +148,11 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
     protected $customData;
 
     /**
+     * @var object
+     */
+    protected $avoidProxy;
+
+    /**
      * @throws RuntimeException
      */
     public function __construct()
@@ -268,6 +273,10 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
 
         if ($this->customData !== NULL) {
             $data['custom-data'] = $this->customData;
+        }
+
+        if ($this->avoidProxy !== NULL) {
+            $data['avoid-proxy'] = $this->avoidProxy;
         }
 
         if (!isset($this->sessionId)) {
@@ -558,6 +567,20 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
         }
 
         $this->customData = $customData;
+    }
+
+    /**
+     * @param  object $customData
+     * @throws InvalidArgumentException
+     */
+    public function setAvoidProxy($avoidProxy)
+    {
+
+        if (!is_bool($avoidProxy)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
+        }
+
+        $this->avoidProxy = $avoidProxy;
     }
 
     /**

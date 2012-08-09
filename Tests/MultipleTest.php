@@ -74,7 +74,8 @@ class MultipleTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTest
             'maxDuration'       => 300,
             'idleTimeout'       => 60,
             'build'             => 3,
-            'customData'        => array('release' => '1.0')
+            'customData'        => array('release' => '1.0'),
+            'avoidProxy'        => true
         ),
         array(
             'name'           => 'Google Chrome on Windows',
