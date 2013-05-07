@@ -68,10 +68,17 @@ if(count($argv) >= 3) {
         $dumper_lol = new sfYamlDumper();
         $config = array('username' => $argv[2], 'access_key' => $argv[3]);
         $yaml = $dumper_lol->dump($config);
-        if(!(file_exists($_SERVER['HOME'] . '/.sauce'))) {
-            mkdir($_SERVER['HOME'] . '/.sauce');
+        
+		/*
+		 * N.B.	$_SERVER['HOME'] is not available on Windows. 
+		 * 		Instead, the variable is split into $_SERVER['HOMEDRIVE'] and $_SERVER['HOMEPATH']
+		 */
+		$home=isset($_SERVER['HOME'])?$_SERVER['HOME']:$_SERVER['HOMEDRIVE'].$_SERVER['HOMEPATH']; 
+		 
+        if(!(file_exists($home . '/.sauce'))) {
+            mkdir($home . '/.sauce');
         }
-        file_put_contents($_SERVER['HOME'] . '/.sauce/ondemand.yml', $yaml);
+        file_put_contents($home . '/.sauce/ondemand.yml', $yaml);
         $message = "Account configured.  You are now ready to run saucy tests.  You feel very hot and saucy.\n";
     }
 }
