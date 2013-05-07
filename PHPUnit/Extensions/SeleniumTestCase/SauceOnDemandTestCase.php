@@ -147,7 +147,13 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
         $driver->setTestCase($this);
         $driver->setTestId($this->testId);
 
-        $yml_path = realpath($_SERVER['HOME']) . '/.sauce/ondemand.yml';
+		/*
+		 * N.B.	$_SERVER['HOME'] is not available on Windows. 
+		 * 		Instead, the variable is split into $_SERVER['HOMEDRIVE'] and $_SERVER['HOMEPATH']
+		 */
+		$home=isset($_SERVER['HOME'])?$_SERVER['HOME']:$_SERVER['HOMEDRIVE'].$_SERVER['HOMEPATH']; 
+		
+        $yml_path = realpath($home) . '/.sauce/ondemand.yml';
         $yml_found = file_exists($yml_path);
         if(!$yml_found) {
             $yml_path = '/.sauce/ondemand.yml';
